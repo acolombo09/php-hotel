@@ -78,7 +78,7 @@ $hotels = [
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- My css link -->
   <link rel="stylesheet" href="css/style.css">
-  <title>PHP Badwords</title>
+  <title>PHP HOTELS</title>
 </head>
 <body class="bg-dark">
   <div class="container my-5 py-4 bg-body-tertiary">
@@ -98,22 +98,7 @@ $hotels = [
         <!-- rimuovo gli elementi che non servono -->
         <!-- inserisco il php nell'html -->
         <!-- ciclo foreach su array hotels -->
-        <div class="col my-3">
-          <div class="w-100 mx-auto">
-            <ul class="list-group">
-            <?php foreach($hotels as $key => $hotel) { ?>
-              <li class="list-group-item">
-                <!-- per accedere alla chiave devo usare le parentesi quadre -->
-                <?php echo "Name: " . $hotel['name']; ?><br>
-                <?php echo "Description: " . $hotel['description']; ?><br>
-                <?php echo "Parking: " . ($hotel['parking'] ? 'Yes' : 'No'); ?><br>
-                <?php echo "Vote: " . $hotel['vote']; ?><br>
-                <?php echo "Distance to center: " . $hotel['distance_to_center'] . " km"; ?><br>
-              </li>
-            <?php } ?>
-          </div>
-        </div>
-
+        <!-- riporto tutto in tabella -->
         <div class="col my-3">
           <div class="w-100 mx-auto">
             <table class="table table-hover">
@@ -128,46 +113,20 @@ $hotels = [
                 </tr>
               </thead>
               <tbody class="table-group-divider">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>Otto</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>@fat</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@fat</td>
-                  <td>@fat</td>
-                  <td>Larry the Bird</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@fat</td>
-                  <td>@fat</td>
-                  <td>Larry the Bird</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@fat</td>
-                  <td>@fat</td>
-                  <td>Larry the Bird</td>
-                </tr>
+                <?php foreach ($hotels as $key => $hotel) { ?>
+                  <tr>
+                    <th scope="row"><?php echo $key + 1; ?></th>
+                    <!-- per accedere alla chiave, devo usare le parentesi quadre -->
+                    <td><?php echo $hotel['name']; ?></td>
+                    <td><?php echo $hotel['description']; ?></td>
+                    <!-- se la chiave 'parking' nell'array $hotel è vera o falsa 
+                    e restituisce 'Yes' se è vera e 'No' se è falsa. -->
+                    <td><?php echo ($hotel['parking'] ? 'Yes' : 'No'); ?></td>
+                    <td><?php echo $hotel['vote']; ?></td>
+                    <!-- mai usare il + per concatenare stringhe, solo il . va utilizzato -->
+                    <td><?php echo $hotel['distance_to_center'] . " km"; ?></td>
+                  </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div>
