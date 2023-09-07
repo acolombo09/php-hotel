@@ -1,47 +1,65 @@
+<!-- 
+nome repo: php-hotel
+Descrizione
+Partiamo da questo array di hotel. https://www.codepile.net/pile/OEWY7Q1G
+Stampare tutti i nostri hotel con tutti i dati disponibili.
+Iniziate in modo graduale.
+Prima stampate in pagina i dati, senza preoccuparvi dello stile.
+Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella.
+Bonus:
+1 - Aggiungere un form ad inizio pagina che tramite una richiesta GET 
+permetta di filtrare gli hotel che hanno un parcheggio.
+2 - Aggiungere un secondo campo al form che permetta di filtrare gli hotel 
+per voto (es. inserisco 3 ed ottengo tutti gli hotel che hanno un voto 
+di tre stelle o superiore)
+NOTA: deve essere possibile utilizzare entrambi i filtri contemporaneamente 
+(es. ottenere una lista con hotel che dispongono di parcheggio e che 
+hanno un voto di tre stelle o superiore).
+Se non viene specificato nessun filtro, visualizzare come in precedenza tutti gli hotel. -->
+
 <?php
 
-  $hotels = [
+$hotels = [
 
-      [
-          'name' => 'Hotel Belvedere',
-          'description' => 'Hotel Belvedere Descrizione',
-          'parking' => true,
-          'vote' => 4,
-          'distance_to_center' => 10.4
-      ],
-      [
-          'name' => 'Hotel Futuro',
-          'description' => 'Hotel Futuro Descrizione',
-          'parking' => true,
-          'vote' => 2,
-          'distance_to_center' => 2
-      ],
-      [
-          'name' => 'Hotel Rivamare',
-          'description' => 'Hotel Rivamare Descrizione',
-          'parking' => false,
-          'vote' => 1,
-          'distance_to_center' => 1
-      ],
-      [
-          'name' => 'Hotel Bellavista',
-          'description' => 'Hotel Bellavista Descrizione',
-          'parking' => false,
-          'vote' => 5,
-          'distance_to_center' => 5.5
-      ],
-      [
-          'name' => 'Hotel Milano',
-          'description' => 'Hotel Milano Descrizione',
-          'parking' => true,
-          'vote' => 2,
-          'distance_to_center' => 50
-      ],
+    [
+        'name' => 'Hotel Belvedere',
+        'description' => 'Hotel Belvedere Descrizione',
+        'parking' => true,
+        'vote' => 4,
+        'distance_to_center' => 10.4
+    ],
+    [
+        'name' => 'Hotel Futuro',
+        'description' => 'Hotel Futuro Descrizione',
+        'parking' => true,
+        'vote' => 2,
+        'distance_to_center' => 2
+    ],
+    [
+        'name' => 'Hotel Rivamare',
+        'description' => 'Hotel Rivamare Descrizione',
+        'parking' => false,
+        'vote' => 1,
+        'distance_to_center' => 1
+    ],
+    [
+        'name' => 'Hotel Bellavista',
+        'description' => 'Hotel Bellavista Descrizione',
+        'parking' => false,
+        'vote' => 5,
+        'distance_to_center' => 5.5
+    ],
+    [
+        'name' => 'Hotel Milano',
+        'description' => 'Hotel Milano Descrizione',
+        'parking' => true,
+        'vote' => 2,
+        'distance_to_center' => 50
+    ],
 
-  ];
+];
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +92,23 @@
             <button class="btn btn-success" type="submit">Search</button>
           </div>
         </div>
+
+        <!-- tramite echo si stampano gli elementi  -->
+        <!-- creo lista in html -->
+        <!-- rimuovo gli elementi che non servono -->
+        <!-- inserisco il php nell'html -->
+        <!-- ciclo foreach su array hotels -->
+        <div class="col my-3">
+          <div class="w-100 mx-auto">
+            <ul class="list-group">
+              <?php foreach($hotels as $elemento) { ?>
+                <li class="list-group-item">Hotel1</li>
+              <?php } ?> 
+              <!-- così però mi crea tanti li quanti sono nella lista -->
+            </ul>
+          </div>
+        </div>
+
         <div class="col my-3">
           <div class="w-100 mx-auto">
             <table class="table table-hover">
@@ -106,10 +141,27 @@
                 </tr>
                 <tr>
                   <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
+                  <td>Larry the Bird</td>
                   <td>@twitter</td>
                   <td>@fat</td>
                   <td>@fat</td>
+                  <td>Larry the Bird</td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Larry the Bird</td>
+                  <td>@twitter</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+                  <td>Larry the Bird</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Larry the Bird</td>
+                  <td>@twitter</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+                  <td>Larry the Bird</td>
                 </tr>
               </tbody>
             </table>
