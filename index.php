@@ -101,11 +101,16 @@ $hotels = [
         <div class="col my-3">
           <div class="w-100 mx-auto">
             <ul class="list-group">
-              <?php foreach($hotels as $elemento) { ?>
-                <li class="list-group-item">Hotel1</li>
-              <?php } ?> 
-              <!-- così però mi crea tanti li quanti sono nella lista -->
-            </ul>
+            <?php foreach($hotels as $key => $hotel) { ?>
+              <li class="list-group-item">
+                <!-- per accedere alla chiave devo usare le parentesi quadre -->
+                <?php echo "Name: " . $hotel['name']; ?><br>
+                <?php echo "Description: " . $hotel['description']; ?><br>
+                <?php echo "Parking: " . ($hotel['parking'] ? 'Yes' : 'No'); ?><br>
+                <?php echo "Vote: " . $hotel['vote']; ?><br>
+                <?php echo "Distance to center: " . $hotel['distance_to_center'] . " km"; ?><br>
+              </li>
+            <?php } ?>
           </div>
         </div>
 
