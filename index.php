@@ -1,3 +1,48 @@
+<?php
+
+  $hotels = [
+
+      [
+          'name' => 'Hotel Belvedere',
+          'description' => 'Hotel Belvedere Descrizione',
+          'parking' => true,
+          'vote' => 4,
+          'distance_to_center' => 10.4
+      ],
+      [
+          'name' => 'Hotel Futuro',
+          'description' => 'Hotel Futuro Descrizione',
+          'parking' => true,
+          'vote' => 2,
+          'distance_to_center' => 2
+      ],
+      [
+          'name' => 'Hotel Rivamare',
+          'description' => 'Hotel Rivamare Descrizione',
+          'parking' => false,
+          'vote' => 1,
+          'distance_to_center' => 1
+      ],
+      [
+          'name' => 'Hotel Bellavista',
+          'description' => 'Hotel Bellavista Descrizione',
+          'parking' => false,
+          'vote' => 5,
+          'distance_to_center' => 5.5
+      ],
+      [
+          'name' => 'Hotel Milano',
+          'description' => 'Hotel Milano Descrizione',
+          'parking' => true,
+          'vote' => 2,
+          'distance_to_center' => 50
+      ],
+
+  ];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,22 +67,57 @@
     <div class="row justify-content-center">
       <div class="col-6 d-flex flex-column justify-content-center mx-auto">
         <div class="col d-flex flex-column justify-content-center mx-auto">
-          <img class="mb-3 mx-auto" src="./imgs/vuejs-logo.png" alt="" width="90" height="75">
+          <img class="my-3 mx-auto" src="./imgs/vuejs-logo.png" alt="" width="90" height="75">
         </div>
-        <div class="col">
-          <div class="w-50 mx-auto">
-            <form action="indexbackend.php" method="POST">
-              <div class="form my-3">
-                <label for="text" class="form-label">Write text here</label>
-                <textarea type="text" class="form-control mt-2" style="height: 150px" id="inputwords" name="inputwords"></textarea>
-              </div>
-              <div class="form my-3">
-                <label for="censor" class="form-label">Write what you want to censor here</label>
-                <input type="text" class="form-control mt-2" id="censored" name="censored">
-              </div>
-              <button class="btn btn-success w-100 py-2" type="submit">Send</button>
-            </form>
-            <p class="my-3 text-body-secondary">© 2023</p>
+        <div class="col my-3">
+          <div class="w-100 mx-auto">
+            <button class="btn btn-success" type="submit">Search</button>
+          </div>
+        </div>
+        <div class="col my-3">
+          <div class="w-100 mx-auto">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Parking</th>
+                  <th scope="col">Vote</th>
+                  <th scope="col">Distance to center</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>Otto</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col my-3">
+          <div class="w-100 mx-auto">
+            <p class="mt-3 text-body-secondary">© 2023</p>
           </div>
         </div>
       </div>
