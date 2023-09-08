@@ -59,6 +59,52 @@ $hotels = [
 
 ];
 
+// $inputwords = $_POST["inputwords"] ?? null;
+// $censored = $_POST["censored"] ?? null;
+//   //daModificare,conCosa, stringa soggetto cioè quella sulla quale eseguire l'operazione richiesta
+// $result = str_replace($censored, '<span class="text-danger">***</span>', $inputwords);
+
+$filterVote = $_GET['vote'] ?? null;
+$filterParking = $_GET['parking'] ?? null;
+
+// consiglio di florian usare spesso il var_dump
+var_dump($filterParking);
+var_dump($filterVote);
+
+$filteredHotels = [];
+// se non ci sono filtri, inserisco tutti gli hotel nell'array filtrato
+if($filterParking === null && $filterVote === null){
+  $filteredHotels = $hotels;
+}else {
+  foreach($hotels as $hotel) {
+    if ($hotel['parking'] >= $filterParking){
+      $filteredHotels = $hotels;
+    }
+  }
+
+  // // soluzione multifiltro
+  // foreach($hotels as $hotel) {
+  //   $mustAdd = true;
+  //   // cambiare il valore di must add in base ai filtri
+  //   // ad ogni ciclo ho i dati di un hotel
+  //   // e devo decidere se pushare questi dati nell'array filtrato
+  //   if(isset($filterVote) && isset($filterPark)){
+  //     $mustadd = ($hotel['vote'] >= $filterVote && $hotel['parking'] == $filterParking);
+  //   }else if (isset($filterVote)) {
+  //     $mustAdd = ($hotel['vote'] >= $filterVote);
+  //   }else if (isset($filterParking)){
+  //     $mustAdd = ($hotel['parking'] >= $filterParking);
+  //   }
+
+  //   if ($mustAdd) {
+  //     $filteredHotels[] = $hotel;
+  //   }
+
+  // }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,9 +133,23 @@ $hotels = [
         <div class="col d-flex flex-column justify-content-center mx-auto">
           <img class="my-3 mx-auto" src="./imgs/vuejs-logo.png" alt="" width="90" height="75">
         </div>
-        <div class="col my-3">
+        <div class="col my-2">
+          <div class="w-25">
+            <select class="form-select">
+              <option selected>Parking</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="col my-2">
           <div class="w-100 mx-auto">
-            <button class="btn btn-success" type="submit">Search</button>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Default checkbox
+              </label>
+            </div>
           </div>
         </div>
 
@@ -104,6 +164,10 @@ $hotels = [
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <!-- volendo si poteva usare la funzione php "array_keys($hotels[0]);"
+                      così che potevo stampare tutte le chiavi dell'array ed utilizzarlo
+                      per stampare dinamicamente le keys nelle intestazioni della table
+                  -->
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Description</th>
@@ -113,7 +177,7 @@ $hotels = [
                 </tr>
               </thead>
               <tbody class="table-group-divider">
-                <?php foreach ($hotels as $key => $hotel) { ?>
+                <?php foreach ($filteredHotels as $key => $hotel) { ?>
                   <tr>
                     <th scope="row"><?php echo $key + 1; ?></th>
                     <!-- per accedere alla chiave, devo usare le parentesi quadre -->
